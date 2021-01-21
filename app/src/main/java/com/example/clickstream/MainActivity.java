@@ -24,10 +24,10 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         btn = (Button)findViewById(R.id.button);
         final int numClicks = 2;
-        final int timeout = 1000;
+        final int timeout = 250;
         RxView.clicks(btn)
-       .buffer(1000, TimeUnit.MILLISECONDS)
-                .filter(clicks -> clicks.size() == numClicks)
+       .buffer(250, TimeUnit.MILLISECONDS)
+                .filter(clicks -> clicks.size() >= numClicks)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(clicks -> {
                     Log.d("CLICK", "CLICK");
